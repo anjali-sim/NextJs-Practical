@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
   return (
@@ -12,7 +15,38 @@ export default function LoginForm() {
               Welcome back, enter your credentials to continue.
             </p>
           </div>
-          <div className="p-6 pt-0">
+
+
+          <div className="flex justify-between p-6">
+            <div className="flex-1 mr-1.5">
+            <button
+                className="w-full font-semibold hover:bg-white hover:text-black border border-white transition duration-300 inline-flex items-center justify-center rounded-md text-md disabled:opacity-50 bg-black text-white h-10 px-4 py-2"
+                onClick={() => signIn("google")}
+              >
+                Sign in with Google
+              </button>
+            </div>
+              
+            <div className="flex-1 mr-1.5">
+            <button
+                className="w-full font-semibold hover:bg-white hover:text-black border border-white transition duration-300 inline-flex items-center justify-center rounded-md text-md disabled:opacity-50 bg-black text-white h-10 px-4 py-2"
+                onClick={() => signIn("github")}
+              >
+                Sign in with GitHub
+              </button>
+            </div>
+              
+            </div>
+
+            <div
+            className="my-3 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500">
+            <p
+              className="mx-4 mb-0 text-center font-semibold dark:text-white">
+              OR
+            </p>
+          </div>
+
+          <div className="mt-6 p-6 pt-0">
             <form>
               <div className="group relative rounded-lg border focus-within:border-sky-200 px-3 pb-1.5 pt-2.5 duration-200 focus-within:ring focus-within:ring-sky-300/30">
                 <div className="flex justify-between">
@@ -43,6 +77,7 @@ export default function LoginForm() {
                   </div>
                 </div>
               </div>
+              
               <div className="mt-4 ml-3 flex justify-between">
                 <Link
                   className="text-md font-medium text-foreground underline mt-1"
@@ -54,7 +89,7 @@ export default function LoginForm() {
                   className="font-semibold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2"
                   href="/login"
                 >
-                  Log in
+                  Log In
                 </Link>
               </div>
               <div className="mt-4 flex items-center ml-3">
@@ -66,8 +101,10 @@ export default function LoginForm() {
                   Sign Up
                 </Link>
               </div>
+
             </form>
           </div>
+
         </div>
       </div>
     </div>
