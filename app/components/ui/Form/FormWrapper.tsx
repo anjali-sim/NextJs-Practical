@@ -1,4 +1,10 @@
-export default function FormWrapper({heading, content}) {
+interface Props {
+  heading: string;
+  content: string;
+  children: React.ReactNode;
+}
+
+export default function FormWrapper({ heading, content, children }: Props) {
   return (
     <div className="bg-black text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
       <div className="relative mt-12 w-full max-w-lg sm:mt-10">
@@ -10,9 +16,9 @@ export default function FormWrapper({heading, content}) {
               {content}
             </p>
           </div>
+          {children}
         </div>
       </div>
     </div>
   );
 }
-
