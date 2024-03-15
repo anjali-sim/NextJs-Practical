@@ -4,13 +4,27 @@ import { signIn } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
+import {useRouter} from "next/navigation";
+
+// import { auth } from "@/app/auth";
+
 interface Props {
     title: string;
 }
 
+
 export default function SocialSignInOptions({title}: Props) {
-  const handleSignInGoogle = () => signIn("google");
-  const handleSignInGitHub = () => signIn("github");
+
+    const router = useRouter();
+
+  const handleSignInGoogle = async () => {
+    await signIn("google");
+    router.push("/");
+  } 
+  const handleSignInGitHub = async () => {
+    await signIn("github");
+    router.push("/");
+  } 
 
   return (
     <div className="flex justify-between p-6">
