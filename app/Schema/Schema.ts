@@ -1,6 +1,9 @@
 import { z } from "zod";
 
 import {
+  EMAIL_INVALID_FORMAT_VALIDATION_MESSAGE,
+  EMAIL_MAXIMUM_VALIDATION_MESSAGE,
+  EMAIL_REQUIRED_VALIDATION_MESSAGE,
   PASSWORD_MAXIMUM_VALIDATION_MESSAGE,
   PASSWORD_MINIMUM_VALIDATION_MESSAGE,
   PASSWORD_REQUIRED_VALIDATION_MESSAGE,
@@ -11,7 +14,7 @@ import {
   USERNAME_SPECIAL_VALIDATION_MESSAGE,
 } from "../constants/validationMessages";
 
-export const loginSchema = z.object({
+export const Schema = z.object({
   username: z
     .string()
     .min(1, { message: USERNAME_REQUIRED_VALIDATION_MESSAGE })
@@ -31,5 +34,9 @@ export const loginSchema = z.object({
         message: PASSWORD_SPECIAL_VALIDATION_MESSAGE,
       }
     ),
-    
+  email: z
+    .string()
+    .min(1, { message: EMAIL_REQUIRED_VALIDATION_MESSAGE })
+    .max(100, { message: EMAIL_MAXIMUM_VALIDATION_MESSAGE })
+    .email({ message: EMAIL_INVALID_FORMAT_VALIDATION_MESSAGE }),
 });

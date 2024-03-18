@@ -1,6 +1,6 @@
 "use server";
 
-import { loginSchema } from "@/app/Schema/loginSchema";
+import { Schema } from "@/app/Schema/Schema";
 
 const loginAction = async (
   prevState: Record<string, string> | { message: string },
@@ -8,7 +8,7 @@ const loginAction = async (
 ) => {
   console.log(formData);
 
-  const validatedFields = loginSchema.safeParse({
+  const validatedFields = Schema.safeParse({
     username: formData.get("username"),
     password: formData.get("password"),
   });
