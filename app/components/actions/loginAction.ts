@@ -9,7 +9,7 @@ const loginAction = async (
   console.log(formData);
 
   const validatedFields = Schema.safeParse({
-    username: formData.get("username"),
+    email: formData.get("email"),
     password: formData.get("password"),
   });
 
