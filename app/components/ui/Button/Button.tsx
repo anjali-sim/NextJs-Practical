@@ -2,10 +2,10 @@ import Link from "next/link";
 
 interface Props {
   title: string;
-  isLogin: boolean;
+  isLogin?: boolean;
 }
 
-export default function Button({ title, isLogin = true }: Props) {
+export default function Button({ title, isLogin = false }: Props) {
   return (
     <>
       <div className="mt-4 ml-3 flex justify-between">

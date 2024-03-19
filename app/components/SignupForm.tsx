@@ -13,7 +13,7 @@ export default function Form() {
         <Divider />
 
         <SignupInput>
-          <Button title="Sign Up" isLogin={false} />
+          <Button title="Sign Up" />
           <LinkOptions linkHref="/login" title="Login" description="Already have an account?" />
         </SignupInput>
       </FormWrapper>

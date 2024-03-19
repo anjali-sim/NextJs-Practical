@@ -20,7 +20,7 @@ export const Schema = z.object({
     .min(1, { message: USERNAME_REQUIRED_VALIDATION_MESSAGE })
     .min(6, { message: USERNAME_MINIMUM_VALIDATION_MESSAGE })
     .max(20, { message: USERNAME_MAXIMUM_VALIDATION_MESSAGE })
-    .regex(/^[A-Za-z0-9]+$/, {
+    .regex(/^[A-Za-z0-9_ ]+$/, {
       message: USERNAME_SPECIAL_VALIDATION_MESSAGE,
     }),
   password: z

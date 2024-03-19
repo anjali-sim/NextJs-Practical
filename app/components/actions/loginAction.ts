@@ -4,7 +4,6 @@ import { Schema } from "@/app/schema/schema";
 import { signIn } from "@/app/auth";
 import { formatErrors } from "@/app/utils/formatErrors";
 
-
 const loginAction = async (
   prevState: Record<string, string> | { message: string },
   formData: FormData

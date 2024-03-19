@@ -11,8 +11,9 @@ export default function InputEmailForm() {
 
     const [email, setEmail] = useState("");
 
-    const handleSubmit = async(e:Event) => {
+    const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // console.log(email);
         await mailAction({email});
     }
   return (
@@ -27,7 +28,7 @@ export default function InputEmailForm() {
           </div>
           <InputComponent type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
           </div>
-          <Button title="Reset Password" isLogin={false} />
+          <Button title="Reset Password" />
         </form>
       </div>
     </div>
