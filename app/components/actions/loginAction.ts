@@ -1,13 +1,9 @@
 "use server";
 
 import { Schema } from "@/app/schema/schema";
-
 import { signIn } from "@/app/auth";
-import { AuthError } from "next-auth";
 import { formatErrors } from "@/app/utils/formatErrors";
 
-import connect from "@/app/mongodb/DBConnect";
-import User from "@/app/mongodb/models/user";
 
 const loginAction = async (
   prevState: Record<string, string> | { message: string },

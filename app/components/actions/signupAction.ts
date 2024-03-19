@@ -3,7 +3,7 @@ import connect from "@/app/mongodb/DBConnect";
 import User from "@/app/mongodb/models/user";
 import { Schema } from "@/app/schema/schema";
 import { formatErrors } from "@/app/utils/formatErrors";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 import bcrypt from "bcrypt";
 
@@ -54,7 +54,7 @@ const signupAction = async (
     // Save the new user to the database
     await newUser.save();
     console.log("User created successfully");
-    redirect("/login");
+    // redirect("/login");
 
     // Return success message or user data
   } catch (error) {

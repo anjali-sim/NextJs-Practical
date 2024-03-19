@@ -43,12 +43,15 @@ export const {
         const user = await User.findOne({ email: credentials.email });
         if (user) {
           const isPasswordCorrect = await bcrypt.compare(
-            credentials.password,
+            credentials?.password,
             user.password
           );
           if (isPasswordCorrect) {
             return user;
           }
+          return null;
+        } else {
+          return null;
         }
 
         // if (user && user.password === credentials.password) {
@@ -56,7 +59,7 @@ export const {
         //   return user;
         // }
         // If login fails, return null
-        return null;
+        
       },
     }),
   ],
@@ -77,4 +80,8 @@ export const {
       }
     },
   },
+  session: {
+    strategy: "jwt",
+    // maxAge: 10
+  }
 });
