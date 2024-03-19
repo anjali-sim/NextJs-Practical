@@ -1,11 +1,14 @@
 import NextAuth from "next-auth";
-import Github from "next-auth/providers/github";
+import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-
-// import CredentialsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
+import connect from "./mongodb/DBConnect";
+import User from "./mongodb/models/user";
+import bcrypt from "bcrypt";
 
 export const {
   auth,
+  signIn,
   handlers: { GET, POST },
 } = NextAuth({
   providers: [
@@ -16,50 +19,62 @@ export const {
         params: {
           prompt: "consent",
           access_type: "online",
-          response_type: "code"
-        }
-    }
+          response_type: "code",
+        },
+      },
     }),
-    Github({
-      clientId: process.env.GITHUB_CLIENT_ID,
+    GithubProvider({
+      clientId: process.env.GITHUB_CeLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       authorization: {
         params: {
           prompt: "consent",
           access_type: "offline",
-          response_type: "code"
-        }
-    }
-    
+          response_type: "code",
+        },
+      },
     }),
-    // CredentialsProvider({
-    //     name: "User Credential",
-    //     credentials: {
-    //       username: { type: String, required: true },
-    //       password: { type: String, required: true },
-    //     },
-    //     authorize: async (credentials) => {
-    //       const user = {id:12, name:'Abc', password:'xyz'};
-    //       if(credentials?.username===user.name && credentials?.password===user.password) {
-    //           return user;
-    //       } else { 
-    //           return null;
-    //       }
-    //     }
-    //   }),
+    CredentialsProvider({
+      name: "credentials",
+      async authorize(credentials) {
+        await connect();
+
+        // For login
+        const user = await User.findOne({ email: credentials.email });
+        if (user) {
+          const isPasswordCorrect = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+          if (isPasswordCorrect) {
+            return user;
+          }
+        }
+
+        // if (user && user.password === credentials.password) {
+        //   // Redirect to home page after successful login
+        //   return user;
+        // }
+        // If login fails, return null
+        return null;
+      },
+    }),
   ],
   secret: process.env.AUTH_SECRET,
   pages: {
     signIn: "/login",
   },
   callbacks: {
-    async signIn ({user, account}) {
-        if (account!.provider == "google"){
-            return user;
-        }
-        if (account!.provider == "github"){
-            return user;
-        }
-    }
-  }
+    async signIn({ user, account }) {
+      if (account!.provider == "google") {
+        return user;
+      }
+      if (account!.provider == "github") {
+        return user;
+      }
+      if (account!.provider === "credentials") {
+        return user;
+      }
+    },
+  },
 });

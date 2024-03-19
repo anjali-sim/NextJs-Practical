@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 import loginAction from "../../actions/loginAction";
 import { useFormState } from "react-dom";
 
@@ -10,6 +11,16 @@ interface Props {
 const initialState = {
   message: "",
 };
+
+// const handleLogin = async (formData: FormData) => {
+//   const email: string = formData.get("email") as string;
+//   const password: string = formData.get("password") as string;
+
+//   const result = await signIn("credentials", {
+//     email: email,
+//     password: password,
+//   })
+// }
 
 export default function LoginInput({ children }: Props) {
   const [state, formAction] = useFormState(loginAction, initialState);
@@ -48,6 +59,7 @@ export default function LoginInput({ children }: Props) {
           </div>
           {state?.password && <p className="text-red-400">{state.password}</p>}
         </div>
+
         {children}
       </form>
     </div>

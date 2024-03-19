@@ -9,10 +9,9 @@ interface Props {
 
 const initialState = {
   message: "",
-}
+};
 
 export default function SignupInput({ children }: Props) {
-
   const [state, formAction] = useFormState(signupAction, initialState);
   return (
     <div className="mt-6 p-6 pt-0">

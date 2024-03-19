@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function Home() {
   const session = await auth();
 
-  console.log(session)
+  // console.log(session)
   if (!session) {
     redirect("/api/auth/signin");
   }

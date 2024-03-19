@@ -1,6 +1,13 @@
 "use server";
 
-import { Schema } from "@/app/Schema/Schema";
+import { Schema } from "@/app/schema/schema";
+
+import { signIn } from "@/app/auth";
+import { AuthError } from "next-auth";
+import { formatErrors } from "@/app/utils/formatErrors";
+
+import connect from "@/app/mongodb/DBConnect";
+import User from "@/app/mongodb/models/user";
 
 const loginAction = async (
   prevState: Record<string, string> | { message: string },
@@ -8,20 +15,20 @@ const loginAction = async (
 ) => {
   console.log(formData);
 
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
   const validatedFields = Schema.safeParse({
-    email: formData.get("email"),
-    password: formData.get("password"),
+    email: email,
+    password: password,
   });
 
-  const formatErrors = (errors: Record<string, string[]>) => {
-    const formattedErrors: Record<string, string> = {};
-    for (const key in errors) {
-      if (Object.prototype.hasOwnProperty.call(errors, key)) {
-        formattedErrors[key] = errors[key][0];
-      }
-    }
-    return formattedErrors;
-  };
+  await signIn("credentials", {
+    email: email,
+    password: password,
+    // Redirect to home page after successful login
+    redirectTo: "/",
+  });
 
   if (!validatedFields.success) {
     const errors: Record<string, string[]> =
@@ -31,6 +38,37 @@ const loginAction = async (
 
     return formattedErrors;
   }
+
+  // try {
+  // await connect();
+
+  // const user = await User.findOne({ email: email });
+  // if (!user) {
+  //   // User not found
+  //   throw new AuthError("User not found");
+  // }
+
+  // if (user.password !== password) {
+  //   // Incorrect password
+  //   throw new AuthError("Incorrect password");
+  // }
+
+  // Login successful, sign in the user
+  // await signIn("credentials", {
+  //   email: email,
+  //   password: password,
+  //   // Redirect to home page after successful login
+  //   redirectTo: "/",
+  // });
+  // } catch (error) {
+  //   // Handle authentication errors
+  //   if (error instanceof AuthError) {
+  //     // Convert AuthError to the desired format
+  //     return { error: error.message };
+  //   }
+  //   console.error("Login action error:", error);
+  //   return { error: "An error occurred during login" };
+  // }
 };
 
 export default loginAction;
