@@ -12,13 +12,13 @@ interface Props {
     title: string;
 }
 
-
 export default function SocialSignInOptions({title}: Props) {
 
     const router = useRouter();
 
   const handleSignInGoogle = async () => {
     await signIn("google");
+
     router.push("/");
   } 
   const handleSignInGitHub = async () => {

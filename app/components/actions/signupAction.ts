@@ -3,6 +3,7 @@ import connect from "@/app/mongodb/DBConnect";
 import User from "@/app/mongodb/models/user";
 import { Schema } from "@/app/schema/schema";
 import { formatErrors } from "@/app/utils/formatErrors";
+// import { showErrorToast, showSuccessToast } from "@/app/utils/toast";
 // import { redirect } from "next/navigation";
 
 import bcrypt from "bcrypt";
@@ -39,6 +40,7 @@ const signupAction = async (
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
       console.log("Email already exists");
+    //   showErrorToast("Email already exists")
       return;
     }
 
@@ -54,6 +56,7 @@ const signupAction = async (
     // Save the new user to the database
     await newUser.save();
     console.log("User created successfully");
+    // showSuccessToast("User created successfully")
     // redirect("/login");
 
     // Return success message or user data

@@ -7,12 +7,11 @@ import InputComponent from "../components/ui/Input/InputComponent";
 import Button from "../components/ui/Button/Button";
 import { useState } from "react";
 import updatePasswordAction from "../components/actions/updatePasswordAction";
+import { useSearchParams } from 'next/navigation';
 
-interface ResetPasswordParams {
-    token: string;
-  }
 
-const ResetPassword: NextPage<{ params: ResetPasswordParams}> = ({ params }) => {
+const ResetPassword = () => {
+const searchparams = useSearchParams();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -24,7 +23,7 @@ const ResetPassword: NextPage<{ params: ResetPasswordParams}> = ({ params }) => 
         console.error("Passwords do not match");
         return;
       }
-    await updatePasswordAction({ newPassword, token: params.token });
+    await updatePasswordAction({ newPassword, token: searchparams.get("token") });
   };
 
   return (
