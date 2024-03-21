@@ -14,7 +14,11 @@ export default function Form() {
 
         <SignupInput>
           <Button title="Sign Up" />
-          <LinkOptions linkHref="/login" title="Login" description="Already have an account?" />
+          <LinkOptions
+            linkHref="/login"
+            title="Login"
+            description="Already have an account?"
+          />
         </SignupInput>
       </FormWrapper>
     </div>

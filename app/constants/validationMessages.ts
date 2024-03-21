@@ -14,9 +14,10 @@ const PASSWORD_MAXIMUM_VALIDATION_MESSAGE =
 const PASSWORD_SPECIAL_VALIDATION_MESSAGE =
   "Password must contain at least one uppercase letter, one lowercase letter, one digit and one special character";
 
-const EMAIL_REQUIRED_VALIDATION_MESSAGE="Email is required"
-const EMAIL_MAXIMUM_VALIDATION_MESSAGE="Email must be at most 100 characters long"
-const EMAIL_INVALID_FORMAT_VALIDATION_MESSAGE="Invalid email format"
+const EMAIL_REQUIRED_VALIDATION_MESSAGE = "Email is required";
+const EMAIL_MAXIMUM_VALIDATION_MESSAGE =
+  "Email must be at most 100 characters long";
+const EMAIL_INVALID_FORMAT_VALIDATION_MESSAGE = "Invalid email format";
 
 export {
   USERNAME_REQUIRED_VALIDATION_MESSAGE,
@@ -29,5 +30,5 @@ export {
   PASSWORD_SPECIAL_VALIDATION_MESSAGE,
   EMAIL_REQUIRED_VALIDATION_MESSAGE,
   EMAIL_MAXIMUM_VALIDATION_MESSAGE,
-  EMAIL_INVALID_FORMAT_VALIDATION_MESSAGE
+  EMAIL_INVALID_FORMAT_VALIDATION_MESSAGE,
 };

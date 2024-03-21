@@ -21,16 +21,13 @@ const loginAction = async (
   await signIn("credentials", {
     email: email,
     password: password,
-    // Redirect to home page after successful login
     redirectTo: "/",
   });
 
   if (!validatedFields.success) {
     const errors: Record<string, string[]> =
       validatedFields.error.flatten().fieldErrors;
-    // Convert errors object to the desired format {fieldName:<message>}
     const formattedErrors = formatErrors(errors);
-
     return formattedErrors;
   }
 };

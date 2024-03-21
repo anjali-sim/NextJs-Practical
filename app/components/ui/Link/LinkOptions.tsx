@@ -1,15 +1,15 @@
-import Link from "next/link"
+import Link from "next/link";
 
 interface Props {
-    linkHref: string,
-    title: string,
-    description: string
+  linkHref: string;
+  title: string;
+  description: string;
 }
 
-export default function LinkOptions({linkHref, title, description}: Props) {
-    return (
-        <>
-        <div className="mt-4 flex items-center ml-3">
+export default function LinkOptions({ linkHref, title, description }: Props) {
+  return (
+    <>
+      <div className="mt-4 flex items-center ml-3">
         <span>{description}</span>
         <Link
           className="inline-flex items-center justify-center text-sky-200 text-md focus-visible:outline-none hover:text-sky-400 h-10 ml-3 text-md underline"
@@ -18,6 +18,6 @@ export default function LinkOptions({linkHref, title, description}: Props) {
           {title}
         </Link>
       </div>
-        </>
-    )
+    </>
+  );
 }

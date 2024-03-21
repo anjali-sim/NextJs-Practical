@@ -53,13 +53,6 @@ export const {
         } else {
           return null;
         }
-
-        // if (user && user.password === credentials.password) {
-        //   // Redirect to home page after successful login
-        //   return user;
-        // }
-        // If login fails, return null
-        
       },
     }),
   ],
@@ -83,5 +76,5 @@ export const {
   session: {
     strategy: "jwt",
     // maxAge: 10
-  }
+  },
 });
