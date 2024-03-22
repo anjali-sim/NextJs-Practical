@@ -4,10 +4,7 @@ import { signIn } from "next-auth/react";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-
-interface Props {
-  title: string;
-}
+import { Props } from "@/app/types/types";
 
 export default function SocialSignInOptions({ title }: Props) {
   const router = useRouter();

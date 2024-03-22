@@ -36,12 +36,12 @@ const signupAction = async (
     // Check if the email already exists
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
-      return { success: false, message: "Email already exists"};
+      return { success: false, message: "Email already exists" };
     }
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
-    
+
     // Create a new user
     const newUser = new User({
       username: username,
@@ -51,10 +51,9 @@ const signupAction = async (
 
     // Save the new user to the database
     await newUser.save();
-    return {success: true, message: "Signed Up Successfully"};
-
+    return { success: true, message: "Signed Up Successfully" };
   } catch (error) {
-    return { success: false, message: "Signup error"};
+    return { success: false, message: "Signup error" };
   }
 };
 

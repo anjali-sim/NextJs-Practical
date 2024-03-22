@@ -19,8 +19,6 @@ const loginAction = async (
     email: email,
     password: password,
   });
-  // console.log("hello")
-  // console.log(validatedFields.success)
 
   if (!validatedFields.success) {
     const errors: Record<string, string[]> =
@@ -29,18 +27,13 @@ const loginAction = async (
     console.log(formattedErrors);
     return formattedErrors;
   }
-  
+
   try {
     const res = await signIn("credentials", {
       email: email,
       password: password,
-      // redirectTo: "/",
     });
-
-  
-    
-  }
-  catch (error) {
+  } catch (error) {
     console.log(error);
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -50,10 +43,8 @@ const loginAction = async (
           return { message: "Unknown Error Found" };
       }
     }
-  //   throw error;
   }
   redirect("/");
-  
 };
 
 export default loginAction;

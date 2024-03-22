@@ -1,6 +1,4 @@
-interface Props {
-  title: string;
-}
+import { Props } from "@/app/types/types";
 
 export default function Label({ title }: Props) {
   return (

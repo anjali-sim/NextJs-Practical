@@ -1,12 +1,7 @@
+import { LinkProps } from "@/app/types/types";
 import Link from "next/link";
 
-interface Props {
-  linkHref: string;
-  title: string;
-  description: string;
-}
-
-export default function LinkOptions({ linkHref, title, description }: Props) {
+export default function LinkOptions({ linkHref, title, description }: LinkProps) {
   return (
     <>
       <div className="mt-4 flex items-center ml-3">

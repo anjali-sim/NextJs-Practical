@@ -1,10 +1,6 @@
-interface Props {
-  type: string;
-  name: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { InputProps } from "@/app/types/types";
 
-export default function InputComponent({ type, name, onChange }: Props) {
+export default function InputComponent({ type, name, onChange }: InputProps) {
   return (
     <input
       type={type}

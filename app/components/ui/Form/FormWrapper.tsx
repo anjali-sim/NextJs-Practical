@@ -1,10 +1,6 @@
-interface Props {
-  heading: string;
-  content?: string;
-  children: React.ReactNode;
-}
+import { FormProps } from "@/app/types/types";
 
-export default function FormWrapper({ heading, content, children }: Props) {
+export default function FormWrapper({ heading, content, children }: FormProps) {
   return (
     <div className=" text-white flex min-h-screen flex-col items-center pt-16 sm:justify-center sm:pt-0">
       <div className="relative mt-12 w-full max-w-lg sm:mt-10">

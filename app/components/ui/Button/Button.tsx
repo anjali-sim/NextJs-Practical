@@ -1,11 +1,7 @@
 import Link from "next/link";
+import { ButtonProps } from "@/app/types/types";
 
-interface Props {
-  title: string;
-  isLogin?: boolean;
-}
-
-export default function Button({ title, isLogin = false }: Props) {
+export default function Button({ title, isLogin = false }: ButtonProps) {
   return (
     <>
       <div className="mt-4 ml-3 flex justify-between">

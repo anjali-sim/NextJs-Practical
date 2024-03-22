@@ -4,16 +4,13 @@ import loginAction from "@/app/components/actions/loginAction";
 import { useFormState } from "react-dom";
 import InputComponent from "./InputComponent";
 import Label from "../Label/Label";
-
-interface Props {
-  children: React.ReactNode;
-}
+import { ChildrenProps } from "@/app/types/types";
 
 const initialState = {
   message: "",
 };
 
-export default function LoginInput({ children }: Props) {
+export default function LoginInput({ children }: ChildrenProps) {
   const [state, formAction] = useFormState(loginAction, initialState);
   // console.log(state.message)
 
