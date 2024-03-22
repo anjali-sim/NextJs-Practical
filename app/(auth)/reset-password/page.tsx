@@ -1,11 +1,11 @@
 "use client";
 
-import FormWrapper from "../../components/ui/Form/FormWrapper";
-import Label from "../../components/ui/Label/Label";
-import InputComponent from "../../components/ui/Input/InputComponent";
-import Button from "../../components/ui/Button/Button";
+import FormWrapper from "@/app/components/ui/Form/FormWrapper";
+import Label from "@/app/components/ui/Label/Label";
+import InputComponent from "@/app/components/ui/Input/InputComponent";
+import Button from "@/app/components/ui/Button/Button";
 import { useState } from "react";
-import updatePasswordAction from "../../components/actions/updatePasswordAction";
+import updatePasswordAction from "@/app/components/actions/updatePasswordAction";
 import { useSearchParams } from "next/navigation";
 
 const ResetPassword = () => {

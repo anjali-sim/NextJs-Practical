@@ -1,4 +1,4 @@
-import InputEmailForm from "../../components/InputEmailForm"
+import InputEmailForm from "@/app/components/InputEmailForm"
 
 export default function ForgotPasswordPage() {
     return (

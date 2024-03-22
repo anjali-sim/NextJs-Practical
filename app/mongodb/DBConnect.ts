@@ -3,10 +3,6 @@ import mongoose from "mongoose";
 const connect = async () => {
 const mongodburl = process.env.NEXT_PUBLIC_MONGODB_URL;
 
-// if (!mongodburl) {
-//   throw new Error("MongoDB URL is not defined");
-// }
-
   if (mongoose.connections[0].readyState) return;
 
   try {

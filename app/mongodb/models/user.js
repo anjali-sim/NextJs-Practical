@@ -24,6 +24,5 @@ const userSchema = new Schema(
 
 // In nextjs, we connect each time with MongoDB, because of that we are using the below syntax
 const User = mongoose.models.User || mongoose.model("User", userSchema);
-// const User = mongoose.model("User", userSchema);
 
 export default User;

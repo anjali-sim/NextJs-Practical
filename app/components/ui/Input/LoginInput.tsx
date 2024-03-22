@@ -1,6 +1,6 @@
 "use client";
 
-import loginAction from "../../actions/loginAction";
+import loginAction from "@/app/components/actions/loginAction";
 import { useFormState } from "react-dom";
 import InputComponent from "./InputComponent";
 import Label from "../Label/Label";
