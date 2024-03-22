@@ -3,6 +3,8 @@
 import { Schema } from "@/app/schema/schema";
 import { signIn } from "@/app/auth";
 import { formatErrors } from "@/app/utils/formatErrors";
+import { AuthError } from "next-auth";
+import { redirect } from "next/navigation";
 
 const loginAction = async (
   prevState: Record<string, string> | { message: string },
@@ -17,19 +19,41 @@ const loginAction = async (
     email: email,
     password: password,
   });
-
-  await signIn("credentials", {
-    email: email,
-    password: password,
-    redirectTo: "/",
-  });
+  // console.log("hello")
+  // console.log(validatedFields.success)
 
   if (!validatedFields.success) {
     const errors: Record<string, string[]> =
       validatedFields.error.flatten().fieldErrors;
     const formattedErrors = formatErrors(errors);
+    console.log(formattedErrors);
     return formattedErrors;
   }
+  
+  try {
+    const res = await signIn("credentials", {
+      email: email,
+      password: password,
+      // redirectTo: "/",
+    });
+
+  
+    
+  }
+  catch (error) {
+    console.log(error);
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { message: "Invalid Credentials" };
+        default:
+          return { message: "Unknown Error Found" };
+      }
+    }
+  //   throw error;
+  }
+  redirect("/");
+  
 };
 
 export default loginAction;

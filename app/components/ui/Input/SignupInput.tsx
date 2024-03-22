@@ -4,6 +4,7 @@ import { useFormState } from "react-dom";
 import signupAction from "../../actions/signupAction";
 import InputComponent from "./InputComponent";
 import Label from "../Label/Label";
+import { useState } from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ const initialState = {
 
 export default function SignupInput({ children }: Props) {
   const [state, formAction] = useFormState(signupAction, initialState);
+
   return (
     <div className="mt-6 p-6 pt-0">
       <form action={formAction}>
@@ -48,6 +50,8 @@ export default function SignupInput({ children }: Props) {
         </div>
         {state?.password && <p className="text-red-400">{state.password}</p>}
 
+        {state?.error && <p className="text-red-400">{state.error}</p>}
+        {state?.message && <p className="text-red-400">{state.message}</p>}
         {children}
       </form>
     </div>

@@ -4,7 +4,6 @@ import connect from "@/app/mongodb/DBConnect";
 import User from "@/app/mongodb/models/user";
 import { Schema } from "@/app/schema/schema";
 import { formatErrors } from "@/app/utils/formatErrors";
-
 import bcrypt from "bcrypt";
 
 const signupAction = async (
@@ -14,7 +13,6 @@ const signupAction = async (
   try {
     await connect();
 
-    console.log(formData);
     // Extract form data
     const username = formData.get("username") as string;
     const email = formData.get("email") as string;
@@ -38,12 +36,12 @@ const signupAction = async (
     // Check if the email already exists
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
-      console.log("Email already exists");
-      return;
+      return { success: false, message: "Email already exists"};
     }
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+    
     // Create a new user
     const newUser = new User({
       username: username,
@@ -53,9 +51,10 @@ const signupAction = async (
 
     // Save the new user to the database
     await newUser.save();
-    console.log("User created successfully");
+    return {success: true, message: "Signed Up Successfully"};
+
   } catch (error) {
-    console.log("Signup action error:", error);
+    return { success: false, message: "Signup error"};
   }
 };
 

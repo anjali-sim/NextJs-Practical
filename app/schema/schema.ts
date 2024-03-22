@@ -22,7 +22,7 @@ export const Schema = z.object({
     .max(20, { message: USERNAME_MAXIMUM_VALIDATION_MESSAGE })
     .regex(/^[A-Za-z0-9_ ]+$/, {
       message: USERNAME_SPECIAL_VALIDATION_MESSAGE,
-    }),
+    }).optional(),
   password: z
     .string()
     .min(1, { message: PASSWORD_REQUIRED_VALIDATION_MESSAGE })

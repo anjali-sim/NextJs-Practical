@@ -40,6 +40,7 @@ export default function LoginInput({ children }: Props) {
           {state?.password && <p className="text-red-400">{state.password}</p>}
         </div>
 
+        {state?.message && <p className="text-red-400">{state.message}</p>}
         {children}
       </form>
     </div>
