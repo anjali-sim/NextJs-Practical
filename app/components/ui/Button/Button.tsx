@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ButtonProps } from "@/app/types/types";
 
-export default function Button({ title, isLogin = false }: ButtonProps) {
+export default function Button({ title, isLogin = false, onClick }: ButtonProps) {
   return (
     <>
       <div className="mt-4 ml-3 flex justify-between">
@@ -16,6 +16,7 @@ export default function Button({ title, isLogin = false }: ButtonProps) {
         <button
           className="font-extrabold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2"
           type="submit"
+          onClick={onClick}
         >
           {title}
         </button>

@@ -59,6 +59,7 @@ export const {
   secret: process.env.AUTH_SECRET,
   pages: {
     signIn: "/login",
+    signOut: "/signOut",
   },
   callbacks: {
     async signIn({ user, account }) {

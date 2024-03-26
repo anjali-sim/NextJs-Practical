@@ -1,6 +1,7 @@
 export interface ButtonProps {
   title: string;
   isLogin?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface FormProps {
