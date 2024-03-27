@@ -1,7 +1,7 @@
 "use client";
 
-import Button from "@/app/components/ui/Button/Button";
-import FormWrapper from "@/app/components/ui/Form/FormWrapper";
+import Button from "@/app/components/auth-ui/Button/Button";
+import FormWrapper from "@/app/components/auth-ui/Form/FormWrapper";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 

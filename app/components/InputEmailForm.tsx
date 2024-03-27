@@ -1,9 +1,9 @@
 "use client";
 
-import Button from "./ui/Button/Button";
-import FormWrapper from "./ui/Form/FormWrapper";
-import InputComponent from "./ui/Input/InputComponent";
-import Label from "./ui/Label/Label";
+import Button from "./auth-ui/Button/Button";
+import FormWrapper from "./auth-ui/Form/FormWrapper";
+import InputComponent from "./auth-ui/Input/InputComponent";
+import Label from "./auth-ui/Label/Label";
 import { mailAction } from "./actions/mailAction";
 import { useState } from "react";
 

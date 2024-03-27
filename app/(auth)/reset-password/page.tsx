@@ -1,9 +1,9 @@
 "use client";
 
-import FormWrapper from "@/app/components/ui/Form/FormWrapper";
-import Label from "@/app/components/ui/Label/Label";
-import InputComponent from "@/app/components/ui/Input/InputComponent";
-import Button from "@/app/components/ui/Button/Button";
+import FormWrapper from "@/app/components/auth-ui/Form/FormWrapper";
+import Label from "@/app/components/auth-ui/Label/Label";
+import InputComponent from "@/app/components/auth-ui/Input/InputComponent";
+import Button from "@/app/components/auth-ui/Button/Button";
 import { useState } from "react";
 import updatePasswordAction from "@/app/components/actions/updatePasswordAction";
 import { useSearchParams } from "next/navigation";

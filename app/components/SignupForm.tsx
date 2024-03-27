@@ -1,9 +1,9 @@
-import Button from "./ui/Button/Button";
-import Divider from "./ui/Divider/Divider";
-import FormWrapper from "./ui/Form/FormWrapper";
-import SignupInput from "./ui/Input/SignupInput";
-import SocialSignInOptions from "./ui/SocialSignInOptions/SocialWrapper";
-import LinkOptions from "./ui/Link/LinkOptions";
+import Button from "./auth-ui/Button/Button";
+import Divider from "./auth-ui/Divider/Divider";
+import FormWrapper from "./auth-ui/Form/FormWrapper";
+import SignupInput from "./auth-ui/Input/SignupInput";
+import SocialSignInOptions from "./auth-ui/SocialSignInOptions/SocialWrapper";
+import LinkOptions from "./auth-ui/Link/LinkOptions";
 
 export default function Form() {
   return (

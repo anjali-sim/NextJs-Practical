@@ -1,9 +1,53 @@
 import Link from "next/link";
+import logo from "../../../../public/logo.jpeg";
+import Image from "next/image";
+import { IoMdSearch } from "react-icons/io";
+import { FaCartShopping } from "react-icons/fa6";
+import ToggleButton from "../ToggleButton/ToggleButton";
 
 export default function Navbar() {
   return (
     <>
-      <header className="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
+      <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
+        <div className="bg-primary/70 py-2">
+          <div className="container flex justify-between items-center">
+            {/* Logo */}
+            <div>
+              <Link href="/" className="font-bold text-2xl sm:text-3xl flex gap-2">
+                <Image src={logo} alt="Logo picture" className="w-10 uppercase" />
+              Shop
+              </Link>
+            </div>
+            {/* Search bar */}
+            <div className="flex justify-between items-center gap-4">
+              <div className="relative group hidden sm:block">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="w-[200px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-full border border-gray-300 px-2 py-1 focus:outline-none focus:border-1 focus:border-orange-400 "
+                />
+                <IoMdSearch className="text-gray-500 group-hover:text-primary absolute top-1/2 -translate-y-1/2 right-3" />
+              </div>
+              {/* Order button */}
+              <button className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group">
+              <span className="group-hover:block hidden transition-all duration-200">Order</span>
+            <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
+            </button>
+            {/* Drakmode toggle button */}
+            <div>
+              <ToggleButton />
+            </div>
+            </div>
+          </div>
+          </div>
+          <div></div>
+      </div>
+    </>
+  );
+}
+
+{
+  /* <header className="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
         <div className="flex-1 flex justify-between items-center">
           <a href="#">
             <svg
@@ -56,43 +100,36 @@ export default function Navbar() {
               <li>
                 <Link
                   className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
-                  href="#"
+                  href="/about"
                 >
-                  Documentation
+                  About
                 </Link>
               </li>
               <li>
                 <Link
                   className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 lg:mb-0 mb-2"
-                  href="#"
+                  href="/contact"
                 >
-                  Support
+                  Contact
                 </Link>
               </li>
             </ul>
           </nav>
          
-          <div>
-          {/* <Link
+          <div> */
+}
+{
+  /* <Link
             className="font-extrabold text-white bg-black hover:bg-white hover:text-black hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2"
             href="/login"
           >
             Login
-          </Link> */}
-          <button
-          className="font-extrabold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2"
-          type="submit"
-        >Login</button>
-        </div>
-
-        </div>
-
-        
-      </header>
-    </>
-  );
+          </Link> */
 }
-
-// font-extrabold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2
-
-// py-1.5 px-3 m-1 text-center bg-gray-100 border border-gray-300 rounded-md text-black   dark:text-gray-300 dark:bg-gray-700 hidden lg:inline-block
+// <button
+//     className="font-extrabold hover:bg-black hover:text-white hover:ring hover:ring-white transition duration-300 inline-flex items-center justify-center rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-black h-10 px-4 py-2"
+//     type="submit"
+//   >Login</button>
+//   </div>
+//   </div>
+// </header>
