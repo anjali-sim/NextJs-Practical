@@ -4,6 +4,8 @@ import Link from "next/link";
 import Navbar from "./components/front-ui/Navbar/Navbar";
 import ImageHeader from "./components/front-ui/ImageHeader/ImageHeader";
 import Card from "./components/front-ui/Card/Card";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default async function Home() {
   const session = await auth();
